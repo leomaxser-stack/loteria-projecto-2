@@ -25,7 +25,7 @@ const StartScreen = ({ onCreateRoom, onJoinRoom }) => {
 
     return (
         <div className="start-screen">
-            <h1>Lotería del Centro-Norte de México</h1>
+            <h1>Lotería del Centro-Norte</h1>
             <h2>¡Conoce Guanajuato, Zacatecas, San Luis Potosí y Aguascalientes!</h2>
 
             <div className="instructions" style={{ maxWidth: '600px', margin: '20px auto', textAlign: 'left', backgroundColor: 'white', padding: '20px', borderRadius: '8px', border: '2px solid var(--color-secondary)' }}>
