@@ -43,9 +43,14 @@ class Room {
     }
 
     addPlayer(socketId, name) {
-        if (this.status !== 'waiting') return false;
+        if (this.players.size >= 4) {
+            throw new Error('La sala está llena (máximo 4 jugadores)');
+        }
+        if (this.status !== 'waiting') {
+            throw new Error('El juego ya ha comenzado');
+        }
 
-        // Generate a random 4x4 board (16 cards) from the 20 available
+        // Generate a random 4x4 board (16 cards) from the 28 available
         const board = this.generateBoard();
 
         this.players.set(socketId, {
@@ -183,11 +188,9 @@ class GameManager {
         const room = this.rooms.get(roomId);
         if (!room) throw new Error('Room not found');
 
-        if (room.addPlayer(socketId, playerName)) {
-            return room.players.get(socketId);
-        } else {
-            throw new Error('Could not join room');
-        }
+        // Calls addPlayer which now throws specific errors if it fails
+        room.addPlayer(socketId, playerName);
+        return room.players.get(socketId);
     }
 }
 
