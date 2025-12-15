@@ -47,7 +47,7 @@ const StartScreen = ({ onCreateRoom, onJoinRoom }) => {
                     }}>
                         <input
                             type="text"
-                            placeholder="Tu Nombre"
+                            placeholder="Escribe tu nombre"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
